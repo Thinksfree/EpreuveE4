@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>PPE</title>
+        <link href="{{ asset('/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/lib/bootstrap/css/style.css') }}" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="{{ asset('/lib/jquery/monJS.js') }}"></script>
+        <script src="{{ asset('/lib/jquery/monJquery.js') }}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="{{ path('homepage') }}">Accueil</a>
+                    </div>
+                    <div class="navbar-header">
+                     <a class="navbar-brand" href="{{ path('listeRapport') }}">Liste des rapports</a>
+                    </div>
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="{{ path('listeMedecin') }}">Liste des medecins</a>
+                    </div>
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="{{ path('listeMedicaments') }}">Liste des medicaments</a>
+                    </div>
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="{{ path('ajoutRapport') }}">Ajoutez un rapport</a>
+                    </div>
+                </div>
+            </nav>
+                    <span>
+                        <br>
+                        <br>
+                        <br>
+                    </span>
+                    
+                    <div id="scrollUp">
+                        <a href="#" class="back-to-top"><img src="{{ asset('/img/to_top.png') }}" /></a>
+                        <style>
+                            .back-to-top {
+                                position: fixed;
+                                bottom: 0;
+                                right: 0;
+                                text-decoration: none;
+                                color: #000000;
+                                font-size: 12px;
+                                padding: 1em;
+                                display: none;
+                            }
+                        </style>
+                    </div>
+                    
+                    <div id="section">
+                        <section>
+                            {% block content %}
+                            {% endblock %}
+                        </section>
+                    </div>
+            <footer class="footer">
+            </footer>
+           
+        </div>
+    </body>
+</html>
+

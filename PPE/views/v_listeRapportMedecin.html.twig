@@ -1,0 +1,23 @@
+{% extends "layout.html.twig"%}
+{% block content %}
+    
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:15%;">Date</th>
+            <th style="width:20%;">Motif</th>
+            <th style="width:40%;">Bilan</th>
+        </tr>
+        
+    {% for unRapport in rapportMedecin %}
+        {%set date=unRapport.date %}
+        {%set motif=unRapport.motif %}
+        {%set bilan=unRapport.bilan %}
+        
+                <tr>
+                    <td>{{ date }}</td>
+                    <td>{{ motif }}</td> 
+                    <td>{{ bilan }}</td> 
+                </tr> 
+            {% endfor%}
+        </table>{# empty Twig template #}
+{% endblock%}

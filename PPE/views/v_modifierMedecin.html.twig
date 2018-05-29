@@ -1,0 +1,47 @@
+{# empty Twig template #}
+{%extends "layout.html.twig"%}
+{% block content %}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {%set id= medecin.id %}
+    {%set nom=medecin.nom %}
+    {%set prenom=medecin.prenom %}
+    {%set adresse=medecin.adresse %}
+    {%set tel=medecin.tel %}
+    {%set specialitecomplementaire=medecin.specialitecomplementaire %}
+    {%set departement=medecin.departement %}
+
+    <div class='hidden'>
+        {{ form_widget(form.id, {'value' : id}) }}
+    </div>
+    {{ form_label(form.nom) }}
+    {{ form_widget(form.nom, {'value' : nom}) }}
+    {{ form_errors(form.nom) }}
+
+    {{ form_label(form.prenom) }}
+    {{ form_widget(form.prenom, {'value' : prenom}) }}
+    {{ form_errors(form.prenom) }}
+
+    {{ form_label(form.adresse) }}
+    {{ form_widget(form.adresse, {'value' : adresse}) }}
+    {{ form_errors(form.adresse) }}
+
+    {{ form_label(form.tel) }}
+    {{ form_widget(form.tel, {'value' : tel}) }}
+    {{ form_errors(form.tel) }}
+
+    {{ form_label(form.specialitecomplementaire) }}
+    {{ form_widget(form.specialitecomplementaire, {'value' : specialitecomplementaire}) }}
+    {{ form_errors(form.specialitecomplementaire) }}
+
+    {{ form_label(form.departement) }}
+    {{ form_widget(form.departement, {'value' : departement}) }}
+    {{ form_errors(form.departement) }}
+
+    {{ form_widget(form.save, { 'label': 'Valider modification' }) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

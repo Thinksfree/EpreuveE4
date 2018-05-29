@@ -1,0 +1,20 @@
+{# empty Twig template #}
+{%extends "layout.html.twig"%}
+{% block content %}
+<article>
+    {%set nom=medecin.nom %}
+    {%set prenom=medecin.prenom %}
+    {%set adresse=medecin.adresse %}
+    {%set tel=medecin.tel %}
+    {%set specialitecomplementaire=medecin.specialitecomplementaire %}
+    {%set departement=medecin.departement %}
+    
+    <p>Nom : {{ nom }}</p>
+    <p>Prenom : {{ prenom }}</p>
+    <p>Adresse : {{ adresse }}</p>
+    <p>Telephone : {{ tel }}</p>
+    <p>Specialité Complémentaire : {{ specialitecomplementaire }}</p>
+    <p>Département : {{ departement }}</p>
+    
+</article>
+{% endblock %}

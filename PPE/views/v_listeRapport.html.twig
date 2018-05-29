@@ -1,0 +1,55 @@
+{% extends "layout.html.twig"%}
+{% block content %}
+    
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cherchez un rapport par la date...">    
+    
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:15%;">Date</th>
+            <th style="width:20%;">Motif</th>
+            <th style="width:40%;">Bilan</th>
+            <th style="width:20%;">Nom du Medecin</th>
+        </tr>
+        
+    {% for unRapport in rapport %}
+        {%set date=unRapport.date %}
+        {%set motif=unRapport.motif %}
+        {%set bilan=unRapport.bilan %}
+        {%set nomMedecin=unRapport.nomMedecin %}
+        {%set prenomMedecin=unRapport.prenomMedecin %}
+        
+                <tr>
+                    <td>{{ date }}</td>
+                    <td>{{ motif }}</td> 
+                    <td>{{ bilan }}</td> 
+                    <td>Dr {{ nomMedecin }} {{ prenomMedecin }}</td>
+                </tr> 
+            {% endfor%}
+        </table>
+   
+    
+<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td0, td1, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td0 = tr[i].getElementsByTagName("td")[0];
+    td1 = tr[i].getElementsByTagName("td")[1];
+    if (td0 || td1) {
+      if ((td0.innerHTML.toUpperCase().indexOf(filter) > -1) ||(td1.innerHTML.toUpperCase().indexOf(filter) > -1)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }  
+  }
+}
+</script> 
+
+{% endblock%}

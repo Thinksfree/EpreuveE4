@@ -1,0 +1,45 @@
+{% extends "layout.html.twig"%}
+{% block content %}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}     
+        {{ form_row(form.date) }}
+        {{ form_row(form.bilan) }}
+        {{ form_row(form.motif) }}
+        {{ form_row(form.Visiteur) }}
+        {{ form_row(form.Medecin) }}
+        
+        <fieldset>
+            <legend>Médicaments offerts</legend>
+                <div>
+                   
+                        <table class="table table-stiped" id="tableau">
+                            <tr>
+                                <td>Nom:</td>
+                                <td>Quantité:</td>
+                            </tr>
+                             
+                            <tr>
+                                <td><input type = "text" class="form-control" name="nom[]"/></td>
+                                <td><input type = "text" class="form-control" name="quantite[]"/></td>
+                            </tr>
+                        </table>
+                        
+                        <div class="buttons">          
+                            <div id="btn_medoc" class="btn btn-primary active">Ajouter un médicament</div>
+                        </div>
+                </div>
+        </fieldset>
+        <br/>
+        <div>
+            {{ form_widget(form.save, { 'label': 'Ajoutez le rapport' }) }}
+        </div>
+               
+    {{ form_end(form) }}
+    
+<script>
+    $('#tableau').on('click', '.btn-danger', function() {
+            $(this).parent('td').parent('tr').remove();
+    });
+</script>
+
+{% endblock%}

@@ -1,0 +1,61 @@
+{% extends "layout.html.twig"%}
+{% block content %}
+    
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cherchez un médecin..">    
+    
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:20%;">Nom</th>
+            <th style="width:20%;">Prenom</th>
+            <th style="width:20%;">Plus d'informations</th>
+            <th style="width:20%;">Consulter les rapports</th>
+            <th style="width:20%;">Modifier les informations</th>
+        </tr>
+
+        {% for unMedecin in medecins %}
+            {%set nom=unMedecin.nom %}
+            {%set prenom=unMedecin.prenom %}
+            {%set nbrapport=unMedecin.nbrapport %}
+               
+        <tr>
+            <td>{{ nom }}</td>  
+            <td>{{ prenom }}</td>
+            <td><a href ="{{ path('unMedecin', { 'id': unMedecin.id }) }}" class="btn btn-success" >Voir plus</a></td>
+            {% if nbrapport != 0 %}
+                <td><a href ="{{ path('listeRapportMedecin', { 'id': unMedecin.id }) }}" class="btn btn-secondary" id="btnNbRapport"> {{ nbrapport }} rapport(s)</a></td>
+            {% else %}
+                <td><a class="btn btn-secondary" id="btnNbRapport" disabled> {{ nbrapport }} rapport(s)</a></td>
+            {% endif %}
+            <td><a href ="{{ path('modifierMedecin', { 'id': unMedecin.id }) }}" class="btn btn-success">Modifier</a></td>
+        </tr>
+        {% endfor%}
+    </table>
+    
+    
+<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>    
+    
+{% endblock%}
+
+
+{# empty Twig template #}
